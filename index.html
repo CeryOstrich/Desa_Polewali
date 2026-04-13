@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website Resmi Desa Polewali - Kecamatan Tellu Limpoe, Kabupaten Sidenreng Rappang, Sulawesi Selatan.">
+    <meta name="keywords" content="Desa Polewali, Sidenreng Rappang, Sidrap, Tellu Limpoe, Website Desa">
+    <meta name="author" content="Pemerintah Desa Polewali">
+    <title>Website Resmi Desa Polewali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="#beranda" class="navbar-brand" onclick="navigate('beranda')">
+                <i class="fas fa-landmark"></i>
+                <div>
+                    <span class="brand-title">Desa Polewali</span>
+                    <span class="brand-subtitle">Kab. Sidenreng Rappang</span>
+                </div>
+            </a>
+            <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="#beranda" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#profil" data-page="profil"><i class="fas fa-info-circle"></i> Profil</a></li>
+                <li><a href="#anggaran" data-page="anggaran"><i class="fas fa-chart-pie"></i> Anggaran</a></li>
+                <li><a href="#galeri" data-page="galeri"><i class="fas fa-images"></i> Galeri</a></li>
+                <li><a href="#umkm" data-page="umkm"><i class="fas fa-store"></i> UMKM</a></li>
+                <li><a href="#kontak" data-page="kontak"><i class="fas fa-envelope"></i> Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="app-content">
+        <!-- Konten halaman dirender oleh app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="app-footer" style="display:none;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-landmark"></i> Desa Polewali</h3>
+                    <p>Website resmi Pemerintah Desa Polewali, Kecamatan Tellu Limpoe, Kabupaten Sidenreng Rappang, Provinsi Sulawesi Selatan.</p>
+                    <div class="footer-social" id="footer-social"></div>
+                </div>
+                <div class="footer-col">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#profil">Profil Desa</a></li>
+                        <li><a href="#anggaran">Transparansi Anggaran</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Layanan</h3>
+                    <ul>
+                        <li><a href="#galeri">Galeri Desa</a></li>
+                        <li><a href="#umkm">Potensi UMKM</a></li>
+                        <li><a href="#kontak">Kontak Desa</a></li>
+                        <li><a href="#kritik-saran">Kritik &amp; Saran</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kontak</h3>
+                    <ul class="footer-contact" id="footer-contact"></ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year"></span> Pemerintah Desa Polewali. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Modal Galeri -->
+    <div class="modal-overlay" id="galeriModal">
+        <div class="modal-content" style="position:relative;">
+            <button class="modal-close" onclick="closeGaleriModal()">&times;</button>
+            <div class="modal-img-placeholder" id="modalImgContainer">
+                <i class="fas fa-image"></i>
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
