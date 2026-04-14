@@ -11,7 +11,7 @@ const DATA = {
     // NOMOR WHATSAPP UNTUK FORM KONTAK & SARAN
     // Format: 628xxxxxxxxxx (tanpa + atau -)
     // ========================================
-    whatsapp_no: '628xxxxxxxxxx',
+    whatsapp_no: '628377779984',
 
     // ========================================
     // PROFIL DESA

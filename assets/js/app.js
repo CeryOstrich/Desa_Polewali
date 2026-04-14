@@ -9,7 +9,7 @@
 function formatTanggal(str) {
     if (!str) return '-';
     const d = new Date(str);
-    const bulan = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     return `${d.getDate()} ${bulan[d.getMonth()]} ${d.getFullYear()}`;
 }
 function formatRupiah(n) {
@@ -17,14 +17,14 @@ function formatRupiah(n) {
 }
 function esc(s) {
     if (!s) return '';
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 // ===========================
 // ROUTER
 // ===========================
 function getPage() {
-    const hash = window.location.hash.replace('#','').split('/')[0];
+    const hash = window.location.hash.replace('#', '').split('/')[0];
     return hash || 'beranda';
 }
 
@@ -44,7 +44,7 @@ function setActiveNav(page) {
 }
 
 function renderPage() {
-    const hash = window.location.hash.replace('#','');
+    const hash = window.location.hash.replace('#', '');
     const parts = hash.split('/');
     const page = parts[0] || 'beranda';
     const param = parts[1] || null;
@@ -68,15 +68,15 @@ function renderPage() {
     // Scroll to top
     window.scrollTo(0, 0);
 
-    switch(page) {
-        case 'beranda': app.innerHTML = renderBeranda(); footer.style.display=''; break;
-        case 'profil': app.innerHTML = renderProfil(); footer.style.display=''; initProfilChart(); break;
-        case 'anggaran': app.innerHTML = renderAnggaran(); footer.style.display=''; break;
-        case 'galeri': app.innerHTML = renderGaleri(); footer.style.display=''; break;
-        case 'umkm': app.innerHTML = renderUMKM(); footer.style.display=''; break;
-        case 'kontak': app.innerHTML = renderKontak(); footer.style.display=''; break;
-        case 'kritik-saran': app.innerHTML = renderKritikSaran(); footer.style.display=''; break;
-        default: app.innerHTML = renderBeranda(); footer.style.display=''; break;
+    switch (page) {
+        case 'beranda': app.innerHTML = renderBeranda(); footer.style.display = ''; break;
+        case 'profil': app.innerHTML = renderProfil(); footer.style.display = ''; initProfilChart(); break;
+        case 'anggaran': app.innerHTML = renderAnggaran(); footer.style.display = ''; break;
+        case 'galeri': app.innerHTML = renderGaleri(); footer.style.display = ''; break;
+        case 'umkm': app.innerHTML = renderUMKM(); footer.style.display = ''; break;
+        case 'kontak': app.innerHTML = renderKontak(); footer.style.display = ''; break;
+        case 'kritik-saran': app.innerHTML = renderKritikSaran(); footer.style.display = ''; break;
+        default: app.innerHTML = renderBeranda(); footer.style.display = ''; break;
     }
 
     // Re-init UI events after render
@@ -151,7 +151,7 @@ function renderBeranda() {
                     <h3>${esc(p.nama_kades)}</h3>
                     <p>Kepala Desa Polewali</p>
                 </div>
-                <div class="sambutan-text">${p.sambutan_kades.replace(/\n/g,'<br>')}</div>
+                <div class="sambutan-text">${p.sambutan_kades.replace(/\n/g, '<br>')}</div>
             </div>
         </div>
     </section>
@@ -195,7 +195,7 @@ function renderProfil() {
     `).join('');
 
     const misiHTML = p.misi.split('\n').map(m => m.trim()).filter(m => m).map(m =>
-        `<li><i class="fas fa-check-circle"></i> ${esc(m.replace(/^\d+\.\s*/,''))}</li>`
+        `<li><i class="fas fa-check-circle"></i> ${esc(m.replace(/^\d+\.\s*/, ''))}</li>`
     ).join('');
 
     return `
@@ -216,7 +216,7 @@ function renderProfil() {
             </div>
             <div class="content-card">
                 <div class="content-card-body">
-                    <p class="lead">${p.sejarah.replace(/\n/g,'<br>')}</p>
+                    <p class="lead">${p.sejarah.replace(/\n/g, '<br>')}</p>
                 </div>
             </div>
         </div>
@@ -302,7 +302,7 @@ function initProfilChart() {
             type: 'doughnut',
             data: {
                 labels: ['Laki-laki', 'Perempuan'],
-                datasets: [{ data: [pd.laki_laki, pd.perempuan], backgroundColor: ['#2196F3','#E91E63'], borderWidth: 0 }]
+                datasets: [{ data: [pd.laki_laki, pd.perempuan], backgroundColor: ['#2196F3', '#E91E63'], borderWidth: 0 }]
             },
             options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
         });
@@ -391,7 +391,7 @@ function renderBeritaDetail(id) {
                             ${berita.foto ? `<img src="${esc(berita.foto)}" alt="${esc(berita.judul)}" style="width:100%;height:100%;object-fit:cover;">` : '<i class="fas fa-newspaper"></i>'}
                         </div>
                     </div>
-                    <div class="berita-detail-content">${berita.isi.replace(/\n/g,'<br>')}</div>
+                    <div class="berita-detail-content">${berita.isi.replace(/\n/g, '<br>')}</div>
                     <div class="berita-share">
                         <span>Bagikan:</span>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
@@ -427,8 +427,8 @@ function renderAgenda() {
     const agendaHTML = agenda.length ? agenda.map(a => `
         <div class="agenda-item" data-status="${esc(a.status)}">
             <div class="agenda-date">
-                <span class="agenda-day">${new Date(a.tanggal).getDate().toString().padStart(2,'0')}</span>
-                <span class="agenda-month">${['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][new Date(a.tanggal).getMonth()]}</span>
+                <span class="agenda-day">${new Date(a.tanggal).getDate().toString().padStart(2, '0')}</span>
+                <span class="agenda-month">${['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'][new Date(a.tanggal).getMonth()]}</span>
                 <span class="agenda-year">${new Date(a.tanggal).getFullYear()}</span>
             </div>
             <div class="agenda-info">
@@ -471,7 +471,7 @@ function renderAgenda() {
 
 function initAgendaFilter() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             const filter = this.dataset.filter;
@@ -488,7 +488,7 @@ function initAgendaFilter() {
 function renderAnggaran() {
     const ang = DATA.anggaran;
     let imagesHTML = '';
-    
+
     if (ang.foto && ang.foto.length > 0) {
         imagesHTML = ang.foto.map(f => {
             if (f) return `<img src="${esc(f)}" alt="Realisasi Anggaran Desa" style="width:100%; max-width:100%; height:auto; display:block; margin: 0 auto 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px;">`;
@@ -537,7 +537,7 @@ function renderGaleri() {
                 <div class="galeri-overlay">
                     <i class="fas fa-search-plus"></i>
                     <h4>${esc(g.judul)}</h4>
-                    <p>${esc(g.deskripsi.substring(0,80))}</p>
+                    <p>${esc(g.deskripsi.substring(0, 80))}</p>
                 </div>
             </div>
             `).join('')}
@@ -586,9 +586,9 @@ function renderUMKM() {
     const umkmHTML = umkm.length ? `
         <div class="umkm-grid">
             ${umkm.map(u => {
-                const telpon = u.telepon.replace(/[^0-9]/g,'');
-                const wa = telpon.startsWith('0') ? '62' + telpon.substring(1) : telpon;
-                return `
+        const telpon = u.telepon.replace(/[^0-9]/g, '');
+        const wa = telpon.startsWith('0') ? '62' + telpon.substring(1) : telpon;
+        return `
                 <div class="umkm-card">
                     <div class="umkm-img">
                         <div class="umkm-img-placeholder">
@@ -611,7 +611,7 @@ function renderUMKM() {
                     </div>
                 </div>
                 `;
-            }).join('')}
+    }).join('')}
         </div>
     ` : `
         <div class="empty-state">
@@ -720,7 +720,7 @@ function submitKontak(e) {
     const subjek = document.getElementById('k-subjek').value.trim();
     const pesan = document.getElementById('k-pesan').value.trim();
     if (!nama || !pesan) {
-        Swal.fire({ icon:'warning', title:'Perhatian', text:'Nama dan Pesan wajib diisi!', confirmButtonColor:'#2E7D32' });
+        Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Nama dan Pesan wajib diisi!', confirmButtonColor: '#2E7D32' });
         return;
     }
     let teks = `*Pesan dari Website Desa Polewali*\n\n`;
@@ -730,7 +730,7 @@ function submitKontak(e) {
     teks += `\n*Pesan:*\n${pesan}`;
     const url = `https://wa.me/${DATA.whatsapp_no}?text=${encodeURIComponent(teks)}`;
     window.open(url, '_blank');
-    Swal.fire({ icon:'success', title:'Berhasil!', text:'Anda akan diarahkan ke WhatsApp.', confirmButtonColor:'#2E7D32' });
+    Swal.fire({ icon: 'success', title: 'Berhasil!', text: 'Anda akan diarahkan ke WhatsApp.', confirmButtonColor: '#2E7D32' });
     e.target.reset();
 }
 
@@ -787,7 +787,7 @@ function submitKritik(e) {
     const nama = document.getElementById('ks-nama').value.trim();
     const isi = document.getElementById('ks-isi').value.trim();
     if (!isi) {
-        Swal.fire({ icon:'warning', title:'Perhatian', text:'Kritik/Saran wajib diisi!', confirmButtonColor:'#2E7D32' });
+        Swal.fire({ icon: 'warning', title: 'Perhatian', text: 'Kritik/Saran wajib diisi!', confirmButtonColor: '#2E7D32' });
         return;
     }
     let teks = `*Kritik & Saran - Website Desa Polewali*\n\n`;
@@ -795,7 +795,7 @@ function submitKritik(e) {
     teks += `*Kritik/Saran:*\n${isi}`;
     const url = `https://wa.me/${DATA.whatsapp_no}?text=${encodeURIComponent(teks)}`;
     window.open(url, '_blank');
-    Swal.fire({ icon:'success', title:'Terima Kasih!', text:'Kritik & saran Anda telah dikirim via WhatsApp.', confirmButtonColor:'#2E7D32' });
+    Swal.fire({ icon: 'success', title: 'Terima Kasih!', text: 'Kritik & saran Anda telah dikirim via WhatsApp.', confirmButtonColor: '#2E7D32' });
     e.target.reset();
 }
 
@@ -819,12 +819,12 @@ function initFooter() {
     `;
     // Footer link clicks
     document.querySelectorAll('.footer a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function(e) {
+        a.addEventListener('click', function (e) {
             e.preventDefault();
             window.location.hash = this.getAttribute('href');
         });
     });
-    document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+    document.querySelector('.navbar-brand').addEventListener('click', function (e) {
         e.preventDefault();
         window.location.hash = '#beranda';
     });
@@ -876,13 +876,13 @@ function initProgressBars() {
 // ===========================
 // INIT APP
 // ===========================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initFooter();
     renderPage();
     window.addEventListener('hashchange', renderPage);
 
     // Galeri modal close on overlay click
-    document.getElementById('galeriModal').addEventListener('click', function(e) {
+    document.getElementById('galeriModal').addEventListener('click', function (e) {
         if (e.target === this) closeGaleriModal();
     });
 });
